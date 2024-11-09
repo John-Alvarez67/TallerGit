@@ -1,0 +1,34 @@
+   name: Deploy to Render
+
+   on:
+     push:
+       branches:
+         - main
+
+   jobs:
+     test-and-deploy:
+       runs-on: ubuntu-latest
+
+       steps:
+       - name: Validacion previa
+         run: find .
+
+       - name: Checkout code
+         uses: actions/checkout@v3
+
+
+       - name: Validacion previa
+         run: find .
+
+       - name: Set up Python
+         uses: actions/setup-python@v4
+         with:
+           python-version: '3.x'
+
+       - name: Install pytest
+         run: pip install pytest
+
+       - name: Deploy to Render
+
+         run: |
+           curl -X POST "https://api.render.com/deploy/srv-csnbgp5ds78s7392gan0?key=o_4C2kTvTnA" -H "Content-Type: application/json" -d '{}'
